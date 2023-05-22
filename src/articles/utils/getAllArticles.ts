@@ -1,9 +1,12 @@
-import { collection, query, getDocs } from "firebase/firestore";
+import { collection, query, getDocs, orderBy, Query } from "firebase/firestore";
 import { db } from "../../firebase";
 
 export const getAllArticles = async () => {
   try {
-    const q = query(collection(db, "articles"));
+    const q: Query = query(
+      collection(db, "articles"),
+      orderBy("updatedAt", "desc")
+    );
 
     const querySnapshot = await getDocs(q);
     const documentsArray = querySnapshot.docs.map((doc) => ({

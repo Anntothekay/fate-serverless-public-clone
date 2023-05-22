@@ -57,6 +57,7 @@ const EditArticleForm = ({ articleId }: Props) => {
           title: articleTitle,
           isPublished: isPublished,
           articleId: articleId,
+          teaser: articleTeaser,
         });
         showFeedbackMessage("Successfully updated.");
       }
@@ -182,7 +183,11 @@ const EditArticleForm = ({ articleId }: Props) => {
           // save_onsavecallback: handleSubmit(saveFormData),
           image_list: [
             { title: "1", value: "/pics/1.jpg" },
-            { title: "2", value: "/pics/2.jpg" },
+            { title: "girl with book", value: "/pics/girl-with-book.jpg" },
+            {
+              title: "book illustration",
+              value: "/pics/book-illustration.png",
+            },
           ],
         }}
       />

@@ -26,8 +26,11 @@ export const createOrUpdateArticle = async (
     if (options?.title) {
       updateData.title = options.title;
     }
-    if (options?.isPublished) {
+    if (options?.isPublished !== undefined) {
       updateData.isPublished = options.isPublished;
+    }
+    if (options?.teaser) {
+      updateData.teaser = options.teaser;
     }
 
     if (!options?.articleId) {
