@@ -1,0 +1,295 @@
+/* ==========================================================================
+       NAV
+       ========================================================================== */
+
+nav {
+  // background: linear-gradient(
+  //   25deg,
+  //   rgba(darken($primary-color, 20%), 0.2) 40%,
+  //   rgba(darken($tertiary-color, 30%), 0.4) 100%
+  // );
+  padding: 2.5rem;
+  // margin-bottom: 2rem;
+  position: relative;
+  .brand {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1rem;
+    display: flex;
+    justify-content: center;
+
+    &::after {
+      content: url("/images/brand.svg");
+      position: absolute;
+      transition: all 1s;
+    }
+    &:hover::after {
+      transform: rotateZ(73deg);
+      transform-origin: center center;
+    }
+  }
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    li {
+      margin-left: 40px;
+      a {
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+        // font-weight: 600;
+        font-size: 12px;
+        position: relative;
+        color: white;
+        &.active::after {
+          content: "";
+          border-bottom: 3px solid $secondary-color;
+          display: inline-block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -18px;
+        }
+      }
+    }
+  }
+}
+.nav-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  &.home {
+    font-size: 0;
+    color: transparent;
+    &::before {
+      background: url("/images/home.svg") no-repeat center center;
+      background-size: 100%;
+    }
+  }
+  &.user-control {
+    &::before {
+      background: url(/images/user.svg) no-repeat center center;
+      background-size: 100%;
+    }
+  }
+}
+
+li.user-control {
+  cursor: pointer;
+  position: relative;
+
+  ul.user-control-menu {
+    margin-top: 0.5rem;
+    // border-bottom-left-radius: 0.5rem;
+    // border-bottom-right-radius: 0.5rem;
+    z-index: 1;
+    background-color: $primary-bg-color;
+    // box-shadow: 0px 3px 10px rgba(255, 255, 255, 0.1),
+    // 0px -3px 0px 3px $primary-bg-color;
+    border-left: 1px solid lighten($primary-bg-color, 15%);
+    border-right: 1px solid lighten($primary-bg-color, 15%);
+    // border-bottom: 1px solid lighten($primary-bg-color, 15%);
+    position: absolute;
+    top: 30px;
+    right: 0;
+    padding: 0;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    // &::before {
+    //   color: lighten($primary-bg-color, 10%);
+    //   font-size: 25px;
+    //   content: "▲";
+    //   position: absolute;
+    //   top: -25px;
+    //   right: 2px;
+    // }
+    > hr {
+      width: 100%;
+      margin: 0;
+    }
+    li {
+      margin: 0;
+      a {
+        display: block;
+        padding: 0.75rem 2rem;
+        text-transform: none;
+        letter-spacing: 0.05rem;
+        font-size: 14px;
+      }
+      a.active::after {
+        border-bottom: none;
+        background: $secondary-color;
+        height: 10px;
+        width: 10px;
+        left: 16px;
+        top: 16px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.content {
+  // background: rgba(0, 0, 0, 0.5);
+  border-radius: 2rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 0 15px 10rem;
+}
+.content__fs {
+  padding: 0 2em 10rem;
+}
+
+article img,
+article p img {
+  width: 100%;
+  height: auto;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3rem 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    ul {
+      padding: 0;
+      margin: 0;
+      text-align: right;
+      li {
+        display: inline-block;
+        line-height: 1.7;
+        margin-left: 2em;
+      }
+    }
+  }
+  .made-by {
+    font-size: 80%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* ==========================================================================
+       HERO
+       ========================================================================== */
+
+.hero {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70vh;
+  justify-content: center;
+  margin-top: 100px;
+
+  .hero__inner {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    .hero__inner__img {
+      max-width: 500px;
+      min-width: 500px;
+      width: 100%;
+      background: url("/images/girl-reading-books.svg") no-repeat center top;
+      background-size: contain;
+    }
+    .hero__inner__copy {
+      padding: 2rem;
+      max-width: 500px;
+      h1 {
+        font-size: 80px;
+      }
+    }
+  }
+}
+
+.not-found {
+  background: url("/images/404.svg") no-repeat center top;
+  height: 80vh;
+  background-size: contain;
+}
+.forbidden {
+  background: url("/images/403.svg") no-repeat center top;
+  height: 80vh;
+  background-size: contain;
+}
+
+/* ==========================================================================
+       EXAMPLE Media Queries for Responsive Design.
+       These examples override the primary ('mobile first') styles.
+       Modify as content requires.
+       ========================================================================== */
+
+@media only screen and (max-width: 500px) {
+  .hero {
+    margin: 3rem 0 5rem;
+  }
+  header {
+    nav {
+      padding: 1.5rem;
+      .brand::after {
+        left: 0.25rem;
+        top: -0.75rem;
+      }
+    }
+  }
+  .content,
+  .content__fs {
+    padding-bottom: 25rem;
+  }
+  footer {
+    nav {
+      display: flex;
+      flex-flow: column-reverse nowrap;
+      align-items: flex-start;
+      ul {
+        margin-bottom: 2rem;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        li {
+          margin: 0 0 2.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 915px) {
+  .hero {
+    height: auto;
+    .hero__inner {
+      justify-content: left;
+      .hero__inner__copy h1 {
+        min-width: 300px;
+        font-size: 50px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}

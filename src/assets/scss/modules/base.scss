@@ -1,0 +1,316 @@
+@font-face {
+  font-family: "Raleway";
+  src: url("/src/assets/fonts/Raleway-Regular.woff2") format("woff2"),
+    url("/src/assets/fonts/Raleway-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/src/assets/fonts/PlayfairDisplay-Regular.woff2") format("woff2"),
+    url("/src/assets/fonts/PlayfairDisplay-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+$primary-color: #3900e4;
+$secondary-color: #ed9015;
+$tertiary-color: #6eeeff;
+$primary-text-color: lighten(#3900e4, 50%);
+$primary-bg-color: darken($primary-color, 37%);
+$primary-link-color: lighten($primary-color, 35%);
+
+$error-color: #fd5170;
+$success-color: #73ff66;
+
+$primary-color-gradient: linear-gradient(
+  25deg,
+  $primary-color 0%,
+  lighten($primary-color, 20%) 60%,
+  $tertiary-color 100%
+);
+
+::-moz-selection {
+  background: transparent;
+  text-shadow: none;
+}
+
+#root {
+  overflow: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  // border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    25deg,
+    $primary-bg-color 0%,
+    $primary-color 20%,
+    lighten($primary-color, 30%) 40%,
+    lighten($primary-color, 30%) 60%,
+    $primary-color 80%,
+    $primary-bg-color 100%
+  );
+  margin: 2em 0;
+  padding: 0;
+  &.oversized {
+    margin: 2em -100px;
+  }
+
+  // &.zigzag {
+  //   position: relative;
+  //   font-size: 1.5em;
+  //   height: 1em;
+  //   border: 0;
+  //   // width: 75%;
+  //   &:before,
+  //   &::after {
+  //     content: "";
+  //     display: block;
+  //     position: absolute;
+  //     left: 0;
+  //     right: 0;
+  //     background-size: 1em 100%;
+  //     height: inherit;
+  //   }
+  //   &::before {
+  //     background-image: linear-gradient(
+  //         315deg,
+  //         $primary-color 25%,
+  //         transparent 25%
+  //       ),
+  //       linear-gradient(45deg, $primary-color 25%, transparent 25%);
+  //     background-position: 50%;
+  //     top: -0.5em;
+  //   }
+  //   &::after {
+  //     background-image: linear-gradient(
+  //         135deg,
+  //         $primary-color 25%,
+  //         transparent 25%
+  //       ),
+  //       linear-gradient(225deg, $primary-color 25%, transparent 25%);
+  //     background-position: -webkit-calc(50% - 0.5em);
+  //     top: 0.5em;
+  //   }
+  // }
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+       Author's custom styles
+ ========================================================================== */
+
+body {
+  margin: 0;
+  &.background-image {
+    background-image: url("/images/bg-3.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+}
+html {
+  color: $primary-text-color;
+  font-family: "Raleway", sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: 0.02rem;
+  line-height: 1.4;
+  background-color: $primary-bg-color;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: $primary-text-color;
+  position: relative;
+  font-family: "Playfair Display", serif;
+  margin: 0;
+  &.hr {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin: 1em -1em;
+    &::before,
+    &::after {
+      content: "";
+      height: 1px;
+      margin: 0 1em;
+      flex: 1;
+      background-color: $primary-text-color;
+    }
+    &.hr-glow {
+      &::before,
+      &::after {
+        height: 2px;
+        // -webkit-filter: blur(1px);
+        // border-radius: 3px;
+      }
+      &::before {
+        background: linear-gradient(
+          to right,
+          rgba($primary-color, 0.5),
+          rgba($secondary-color, 0.5)
+        );
+      }
+      &::after {
+        background: linear-gradient(
+          to left,
+          rgba($primary-color, 0.5),
+          rgba($secondary-color, 0.5)
+        );
+      }
+    }
+  }
+}
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+a {
+  color: $primary-link-color;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.error,
+p.error {
+  color: $error-color;
+  margin-top: 2.5rem;
+  &:before {
+    content: "🔥 ";
+  }
+}
+.danger,
+p.danger {
+  color: $error-color;
+  // &:before {
+  //   content: "☠️ ";
+  // }
+}
+.success,
+p.success {
+  color: $success-color;
+  margin-top: 2.5rem;
+  &:before {
+    content: "🍀 ";
+  }
+}
+.input-error,
+p.input-error {
+  color: $error-color;
+  font-size: 75%;
+  margin: 0;
+}
+
+/* ==========================================================================
+       EXAMPLE Media Queries for Responsive Design.
+       These examples override the primary ('mobile first') styles.
+       Modify as content requires.
+       ========================================================================== */
+
+@media only screen and (max-width: 760px) {
+  h1 {
+    font-size: 2rem;
+  }
+  body.background-image {
+    background-attachment: scroll;
+  }
+}
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+}
+
+/* ==========================================================================
+       Print styles.
+       ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+       * Don't show links that are fragment identifiers,
+       * or use the `javascript:` pseudo protocol
+       */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

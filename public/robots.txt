@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /firebase-action/
+Disallow: /verify-email/
+
+Sitemap: http://localhost/sitemap.xml

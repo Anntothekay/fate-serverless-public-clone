@@ -1,0 +1,109 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: $primary-text-color;
+  transition: background-color 5000s ease-in-out 0s;
+}
+#root input:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-image: none !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+input:hover,
+textarea:hover,
+select:hover {
+  outline: $primary-color solid 1px;
+}
+
+label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.login-form,
+form.login-form {
+  max-width: 340px;
+}
+form,
+.login-form {
+  margin: 0 auto;
+  input,
+  button {
+    display: block;
+    width: 100%;
+  }
+  input,
+  textarea {
+    max-width: 340px;
+    background: rgba(255, 255, 255, 0.2);
+    font-family: "Raleway", sans-serif;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    color: $primary-text-color;
+    font-size: 1rem;
+    &[type="checkbox"] {
+      width: auto;
+      display: inline;
+    }
+  }
+  textarea {
+    max-width: 500px;
+    min-height: 200px;
+  }
+  .login-form-inner {
+    background: lighten($primary-bg-color, 4%);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 239px;
+      height: 170px;
+      border-radius: 10px;
+      background: rgba($secondary-color, 1);
+      position: absolute;
+      transform: rotate(7deg);
+      top: -60px;
+      left: -15px;
+    }
+    h1 {
+      color: $primary-bg-color;
+    }
+  }
+  .login-form-links {
+    display: flex;
+    justify-content: space-between;
+    * {
+      padding: 0.5rem;
+    }
+  }
+
+  &.left {
+    margin: 0;
+    button {
+      width: auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .login-form .login-form-inner {
+    &::before {
+      top: -80px;
+    }
+  }
+}

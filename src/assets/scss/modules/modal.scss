@@ -1,0 +1,20 @@
+.modal[open] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+.modal-inner {
+  background: lighten($primary-bg-color, 5%);
+  border-radius: 0.5rem;
+  max-width: 350px;
+  padding: 2em;
+}
