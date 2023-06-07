@@ -1,42 +1,14 @@
 import { NavLink, Link } from "react-router-dom";
-import { User, getAuth, signOut } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { useEffect, useRef, useState } from "react";
-import { getUserRole } from "../auth/utils/getUserRole";
+import useUserStore from "../auth/utils/useAuthStore";
 
-interface HeaderProps {
-  activeUser: {
-    user: User | null;
-    isLoading: boolean;
-  };
-}
-
-const Header = ({ activeUser }: HeaderProps) => {
-  const { user, isLoading } = activeUser;
+const Header = () => {
+  const { user, userRole, logout } = useUserStore();
   const [menuActive, setMenuActive] = useState(false);
-  const [userRole, setUserRole] = useState("");
-  const [userRoleFetched, setUserRoleFetched] = useState(false);
 
   const menuRef = useRef<HTMLUListElement | null>(null);
   const menuButtonRef = useRef<HTMLLIElement | null>(null);
-
-  const fetchUserRole = async (id: string) => {
-    try {
-      const currentUserRole = await getUserRole(id);
-      if (currentUserRole) {
-        setUserRole(currentUserRole.role);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  useEffect(() => {
-    setUserRole("");
-    if (user) {
-      const userId = user.uid;
-      fetchUserRole(userId).then(() => setUserRoleFetched(true));
-    }
-  }, [user]);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -62,14 +34,14 @@ const Header = ({ activeUser }: HeaderProps) => {
         <Link aria-label="Brand Logo" className="brand" to="/"></Link>
         <ul>
           <li>
-            <NavLink className="home nav-icon" to="/">
-              Home
+            <NavLink className="home" to="/about">
+              About
             </NavLink>
           </li>
           <li>
             <NavLink to="/articles">News</NavLink>
           </li>
-          {user && !isLoading && user.emailVerified ? (
+          {user && user.emailVerified ? (
             <>
               <li
                 ref={menuButtonRef}
@@ -80,7 +52,7 @@ const Header = ({ activeUser }: HeaderProps) => {
               >
                 {menuActive && (
                   <ul ref={menuRef} className="user-control-menu">
-                    {userRoleFetched && userRole === "admin" && (
+                    {userRole === "admin" && (
                       <>
                         <li>
                           <NavLink to="/admin/articles">Admin</NavLink>
@@ -97,6 +69,7 @@ const Header = ({ activeUser }: HeaderProps) => {
                         to="/"
                         onClick={() => {
                           signOut(getAuth());
+                          logout();
                         }}
                       >
                         Logout

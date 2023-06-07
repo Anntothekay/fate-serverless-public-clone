@@ -1,16 +1,16 @@
-import { getAllArticles } from "../../../utils/getAllArticles";
-import { useEffect, useState } from "react";
 import ArticlesListItem from "../../components/ArticlesListItem";
+import { useEffect, useState } from "react";
+import { getAllArticles } from "../../../utils/getAllArticles";
 import { createOrUpdateArticle } from "../../../utils/createOrUpdateArticle";
-import useUser from "../../../../auth/utils/useUser";
 import { useNavigate } from "react-router-dom";
 import { deleteArticle } from "../../../utils/deleteArticle";
 import { Article } from "../../../utils/Article";
+import useAuthStore from "../../../../auth/utils/useAuthStore";
 
 const ArticlesListPage = () => {
   const [articles, setArticles] = useState<Article[]>([]);
 
-  const user = useUser().user;
+  const { user } = useAuthStore();
   const userId = user?.uid;
 
   const navigate = useNavigate();

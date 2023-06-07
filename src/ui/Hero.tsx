@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <div className="hero">
@@ -10,7 +12,9 @@ const Hero = () => {
             Join us to read, connect, and support emerging authors as they share
             their creative talents with the world.
           </p>
-          <button className="btn btn-primary">Find Out More</button>
+          <Link to="/about" className="btn btn-primary">
+            Got curious?
+          </Link>
         </div>
         <div className="hero__inner__img"></div>
       </div>

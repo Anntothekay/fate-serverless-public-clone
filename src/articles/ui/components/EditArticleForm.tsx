@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { getArticle } from "../../utils/getArticle";
-import { createOrUpdateArticle } from "../../utils/createOrUpdateArticle";
-import useUser from "../../../auth/utils/useUser";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import useAuthStore from "../../../auth/utils/useAuthStore";
+import { createOrUpdateArticle } from "../../utils/createOrUpdateArticle";
 
 interface Props {
   articleId: string;
@@ -17,7 +17,7 @@ const EditArticleForm = ({ articleId }: Props) => {
     handleSubmit,
   } = useForm();
 
-  const user = useUser().user;
+  const { user } = useAuthStore();
   const userId = user?.uid;
   const [articleText, setArticleText] = useState("");
   const [articleTeaser, setArticleTeaser] = useState("");

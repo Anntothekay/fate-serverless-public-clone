@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import useUser from "./utils/useUser";
+import useAuthStore from "./utils/useAuthStore";
 import { useParams } from "react-router-dom";
 import React from "react";
 import Spinner from "../ui/Spinner";
@@ -12,7 +12,7 @@ function PrivateRoute({ children }: PrivateRouteProps) {
   const { id } = useParams();
   const articleId = id || "";
 
-  const { user, isLoading } = useUser();
+  const { user, isLoading } = useAuthStore();
 
   if (isLoading) {
     return (

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { getStory } from "../../utils/getStory";
 import { createOrUpdateStory } from "../../utils/createOrUpdateStory";
-import useUser from "../../../auth/utils/useUser";
+import useUser from "../../../auth/utils/useAuth";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 

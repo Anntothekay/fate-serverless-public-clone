@@ -79,7 +79,7 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="login-form">
+    <div className="login-form content">
       <div className="login-form-inner">
         <h1>Sign Up</h1>
 

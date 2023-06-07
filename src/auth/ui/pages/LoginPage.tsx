@@ -2,8 +2,11 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FormEvent } from "react";
 import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import useUserStore from "../../utils/useAuthStore";
 
 const LoginPage = (props: any) => {
+  const { login } = useUserStore();
+
   const location = useLocation();
 
   const [error, setError] = useState("");
@@ -17,10 +20,10 @@ const LoginPage = (props: any) => {
   const navigate = useNavigate();
 
   const onLogin = async (event: FormEvent) => {
+    event.preventDefault();
     setIsLoading(true);
     setConfirmationText("");
     setError("");
-    event.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(
         getAuth(),
@@ -33,6 +36,7 @@ const LoginPage = (props: any) => {
         setError("Please verify your e-mail address to log in.");
         return null;
       }
+      login(userCredential.user);
       setIsLoading(false);
       navigate("/account");
     } catch (e: any) {

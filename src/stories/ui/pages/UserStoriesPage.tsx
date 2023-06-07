@@ -1,5 +1,5 @@
 import { getAllStoriesFromAuthor } from "../../utils/getAllStoriesFromAuthor";
-import useUser from "../../../auth/utils/useUser";
+import useUser from "../../../auth/utils/useAuth";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 

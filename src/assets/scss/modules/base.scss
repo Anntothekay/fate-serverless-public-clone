@@ -129,15 +129,33 @@ textarea {
 body {
   margin: 0;
   &.background-image {
+    background-color: $primary-bg-color;
     background-image: url("/images/bg-3.png");
     background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
+    background-position: center top;
+    background-size: 2600px;
+    &.stars {
+      background-image: url("/images/bg-stars.png");
+      background-repeat: repeat-y;
+      background-position: center top;
+      background-size: 2560px auto;
+    }
   }
 }
 html {
   color: $primary-text-color;
+  background: $primary-bg-color;
+  // background: linear-gradient(
+  //   90deg,
+  //   rgba(darken($primary-bg-color, 5%), 1) 0%,
+  //   rgba(darken($primary-bg-color, 5%), 1) 0%,
+  //   rgba(darken($primary-bg-color, 3%), 1) 10%,
+  //   rgba($primary-bg-color, 1) 20%,
+  //   rgba($primary-bg-color, 1) 80%,
+  //   rgba(darken($primary-bg-color, 3%), 1) 90%,
+
+  //   rgba(darken($primary-bg-color, 5%), 1) 100%
+  // );
   font-family: "Raleway", sans-serif;
   font-size: 1em;
   font-weight: 400;
@@ -153,7 +171,7 @@ h4 {
   color: $primary-text-color;
   position: relative;
   font-family: "Playfair Display", serif;
-  margin: 0;
+  margin-top: 0;
   &.hr {
     display: flex;
     text-align: center;
@@ -246,7 +264,7 @@ p.input-error {
     font-size: 2rem;
   }
   body.background-image {
-    background-attachment: scroll;
+    background-size: 350%;
   }
 }
 @media print,

@@ -14,11 +14,22 @@ import EditArticlePageRoute from "./routes/EditArticlePageRoute";
 import SignupPageRoute from "./routes/SignupPageRoute";
 import LoginPageRoute from "./routes/LoginPageRoute";
 import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import ContactPage from "./pages/ContactPage";
+import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 
 const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />}></Route>
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route
+        path="/terms-and-conditions"
+        element={<TermsAndConditionsPage />}
+      />
       <Route path="/articles" element={<ArticlesShowPageRoute />} />
       <Route path="/articles/:id" element={<ArticlePageRoute />} />
       <Route path="/login" element={<LoginPageRoute />}></Route>

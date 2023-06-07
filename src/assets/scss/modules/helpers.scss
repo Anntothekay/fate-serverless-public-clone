@@ -47,7 +47,7 @@
   }
 }
 // Call the mixin with different values to generate classes
-$margin-values: 0em 1em 2em 3em 4em;
+$margin-values: 0em 1em 2em 3em 4em 5em;
 
 @each $value in $margin-values {
   @include mb($value);
@@ -90,6 +90,10 @@ input[type="submit"][aria-busy="true"] {
   vertical-align: -0.175em;
   animation: spinner 0.75s linear infinite;
   opacity: 0.9;
+}
+
+.center {
+  text-align: center;
 }
 
 .fixed {

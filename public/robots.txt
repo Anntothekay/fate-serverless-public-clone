@@ -1,6 +1,7 @@
 User-agent: *
+Allow: *
 Disallow: /admin/
 Disallow: /firebase-action/
 Disallow: /verify-email/
 
-Sitemap: http://localhost/sitemap.xml
+Sitemap: https://fate.netlify.app/sitemap.xml

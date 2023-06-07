@@ -31,10 +31,14 @@ label {
 .login-form,
 form.login-form {
   max-width: 340px;
+  margin: 0 auto;
+}
+.comment-form,
+form.comment-form {
+  max-width: 400px;
 }
 form,
 .login-form {
-  margin: 0 auto;
   input,
   button {
     display: block;

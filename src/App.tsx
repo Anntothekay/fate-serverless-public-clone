@@ -1,31 +1,28 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-
 import Router from "./Router";
-import useUser from "./auth/utils/useUser";
+import useAuth from "./auth/utils/useAuth";
 import Header from "./ui/Header";
-
 import Footer from "./ui/Footer";
 
 function App() {
+  useAuth();
   const location = useLocation();
 
   useEffect(() => {
     if (location.pathname === "/") {
-      // Apply the background image class to the HTML element
       document.body.classList.add("background-image");
+      document.body.classList.remove("stars");
     } else {
-      // Remove the background image class from the HTML element
-      document.body.classList.remove("background-image");
+      document.body.classList.add("background-image");
+      document.body.classList.add("stars");
     }
   }, [location.pathname]);
 
-  const user = useUser();
-
   return (
     <HelmetProvider>
-      <Header activeUser={user} />
+      <Header />
       <Router />
       <Footer />
     </HelmetProvider>
